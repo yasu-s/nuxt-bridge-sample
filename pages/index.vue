@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import NuxtLogo from '@/components/NuxtLogo.vue'
+import VuetifyLogo from '@/components/VuetifyLogo.vue'
+</script>
+
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12" sm="8" md="6">
@@ -75,16 +80,3 @@
     </v-col>
   </v-row>
 </template>
-
-<script>
-import NuxtLogo from '@/components/NuxtLogo.vue'
-import VuetifyLogo from '@/components/VuetifyLogo.vue'
-
-export default {
-  name: 'IndexPage',
-  components: {
-    NuxtLogo,
-    VuetifyLogo
-  }
-}
-</script>
