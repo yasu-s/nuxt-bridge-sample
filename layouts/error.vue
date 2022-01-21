@@ -12,30 +12,34 @@
   </v-app>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, ref, PropType } from '@vue/composition-api'
+
+type ErrorInfo = {
+  /** HTTPステータスコード */
+  statusCode: number
+}
+
+export default defineComponent({
   name: 'EmptyLayout',
   layout: 'empty',
   props: {
     error: {
-      type: Object,
+      type: Object as PropType<ErrorInfo>,
       default: null
     }
   },
-  data () {
-    return {
-      pageNotFound: '404 Not Found',
-      otherError: 'An error occurred'
-    }
+  setup () {
+    const pageNotFound = ref('404 Not Found')
+    const otherError = ref('An error occurred')
+    return { pageNotFound, otherError }
   },
   head () {
-    const title =
-      this.error.statusCode === 404 ? this.pageNotFound : this.otherError
     return {
-      title
+      title: 'error'
     }
   }
-}
+})
 </script>
 
 <style scoped>
