@@ -1291,7 +1291,7 @@
     core-js-compat "^3.19.1"
     regenerator-runtime "^0.13.9"
 
-"@nuxt/bridge@npm:@nuxt/bridge-edge":
+"@nuxt/bridge-edge@latest":
   version "3.0.0-27376999.6abf75d"
   resolved "https://registry.yarnpkg.com/@nuxt/bridge-edge/-/bridge-edge-3.0.0-27376999.6abf75d.tgz#c49e85e753a0b9d782bae7a0a9ba60c0337ea0f4"
   integrity sha512-7ZGZHKdoHDRcRqyvZC9EKHl2/4WzfcOnUoin9C/7aKsbIc7WBrFwFA2TLnZyaLxKtaM7p3y3jwj6j71MAqyx8w==
@@ -1336,6 +1336,13 @@
     vite "^2.7.13"
     vite-plugin-vue2 "^1.9.2"
     vue-template-compiler "^2.6.14"
+
+"@nuxt/bridge@latest":
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@nuxt/bridge/-/bridge-0.10.1.tgz#ff04566f92400eb5a4ce86da71d0bec505771df6"
+  integrity sha512-KsntjwDDm6de8kWlXCer68B0mj+yF5SNQDlwdKr9cUf0RP9cPh0bkgJYrE5+KOVcq3/V3LUE8qGc5q8Sr7eung==
+  dependencies:
+    "@nuxt/bridge-edge" latest
 
 "@nuxt/builder-edge@2.16.0-27358576.777a4b7f":
   version "2.16.0-27358576.777a4b7f"
@@ -2664,6 +2671,30 @@
     "@vue/shared" "3.2.27"
     estree-walker "^2.0.2"
     magic-string "^0.25.7"
+
+"@vue/reactivity@3.2.27":
+  version "3.2.27"
+  resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.2.27.tgz#db7c4eefded938a8974e768b7b8f9ff4fad34a62"
+  integrity sha512-QPfIQEJidRGIu/mPexhcB4csp1LEg2Nr+/QE72MnXs/OYDtFErhC9FxIyymkxp/xvAgL5wsnSOuDD6zWF42vRQ==
+  dependencies:
+    "@vue/shared" "3.2.27"
+
+"@vue/runtime-core@3.2.27":
+  version "3.2.27"
+  resolved "https://registry.yarnpkg.com/@vue/runtime-core/-/runtime-core-3.2.27.tgz#1ea8acd30071f44bcf3915b088ff5d993a9d3154"
+  integrity sha512-NJrjuViHJyrT4bwIocbE4XDaDlA1Pj61pQlneZZdFEvgdMLlhzCCiJ4WZnWcohYQeisUAZjEFKK8GjQieDPFbw==
+  dependencies:
+    "@vue/reactivity" "3.2.27"
+    "@vue/shared" "3.2.27"
+
+"@vue/runtime-dom@latest":
+  version "3.2.27"
+  resolved "https://registry.yarnpkg.com/@vue/runtime-dom/-/runtime-dom-3.2.27.tgz#d13f9f5f27815041f5e9f493d77121955e3f7166"
+  integrity sha512-tlnKkvBSkV7MPUp/wRFsYcv67U1rUeZTPfpPzq5Kpmw5NNGkY6J075fFBH2k0MNxDucXS+qfStNrxAyGTUMkSA==
+  dependencies:
+    "@vue/runtime-core" "3.2.27"
+    "@vue/shared" "3.2.27"
+    csstype "^2.6.8"
 
 "@vue/shared@3.2.27", "@vue/shared@^3.2.26":
   version "3.2.27"
@@ -5151,6 +5182,11 @@ cssstyle@^2.3.0:
   integrity sha512-AZL67abkUzIuvcHqk7c09cezpGNcxUxU4Ioi/05xHk4DQeTkWmGYftIE6ctU6AEt+Gn4n1lDStOtj7FKycP71A==
   dependencies:
     cssom "~0.3.6"
+
+csstype@^2.6.8:
+  version "2.6.19"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.19.tgz#feeb5aae89020bb389e1f63669a5ed490e391caa"
+  integrity sha512-ZVxXaNy28/k3kJg0Fou5MiYpp88j7H9hLZp8PDC3jV0WFjfH5E9xHb56L0W59cPbKbcHXeP4qyT8PrHp8t6LcQ==
 
 cuint@^0.2.2:
   version "0.2.2"
