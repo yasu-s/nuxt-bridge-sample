@@ -77,7 +77,14 @@
 </template>
 
 <script>
+import NuxtLogo from '@/components/NuxtLogo.vue'
+import VuetifyLogo from '@/components/VuetifyLogo.vue'
+
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  components: {
+    NuxtLogo,
+    VuetifyLogo
+  }
 }
 </script>
