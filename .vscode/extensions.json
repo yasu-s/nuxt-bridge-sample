@@ -1,5 +1,7 @@
 {
   "recommendations": [
-    "johnsoncodehk.volar"
+    "johnsoncodehk.volar",
+    "johnsoncodehk.vscode-typescript-vue-plugin",
+    "dbaeumer.vscode-eslint"
   ]
 }
