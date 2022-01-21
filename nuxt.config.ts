@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     titleTemplate: '%s - nuxt-bridge-sample',
     title: 'nuxt-bridge-sample',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
