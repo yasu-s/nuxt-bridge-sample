@@ -88,31 +88,43 @@
   </v-app>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, ref, reactive } from '@vue/composition-api'
+
+export default defineComponent({
   name: 'DefaultLayout',
-  data () {
+  setup () {
+    const drawer = ref(false)
+    const clipped = ref(false)
+    const fixed = ref(false)
+    const items = reactive([
+      {
+        icon: 'mdi-apps',
+        title: 'Welcome',
+        to: '/'
+      },
+      {
+        icon: 'mdi-chart-bubble',
+        title: 'Inspire',
+        to: '/inspire'
+      }
+    ])
+
+    const miniVariant = ref(false)
+    const right = ref(true)
+    const rightDrawer = ref(false)
+    const title = ref('Vuetify.js')
+
     return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      clipped,
+      fixed,
+      drawer,
+      items,
+      miniVariant,
+      right,
+      rightDrawer,
+      title
     }
   }
-}
+})
 </script>
