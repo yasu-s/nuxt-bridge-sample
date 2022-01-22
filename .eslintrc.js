@@ -7,13 +7,20 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     '@nuxtjs/eslint-config-typescript',
     'plugin:nuxt/recommended',
     'plugin:vue/vue3-recommended',
     'plugin:import/typescript',
     'prettier',
   ],
-  plugins: ['prettier'],
+  plugins: ['@typescript-eslint', 'prettier'],
+  parser: 'vue-eslint-parser',
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+    project: './tsconfig.json',
+    extraFileExtensions: ['.vue']
+  },
   rules: {
     'prettier/prettier': [
       'error',
@@ -34,6 +41,7 @@ module.exports = {
     'no-debugger': 'error',
     'no-warning-comments': ['warn', { terms: ['todo', 'fixme', 'hack'], location: 'anywhere' }],
     '@typescript-eslint/array-type': ['error'],
+    '@typescript-eslint/await-thenable': ['error'],
     'import/order': [
       'error',
       {
