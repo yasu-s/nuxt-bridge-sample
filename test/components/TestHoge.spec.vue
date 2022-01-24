@@ -1,10 +1,10 @@
 <script lang="ts">
 import { shallowMount } from '@vue/test-utils'
-import NuxtLogo from '@/components/NuxtLogo.vue'
+import TestHoge from '@/components/TestHoge.vue'
 
-describe('@/components/NuxtLogo.vue', () => {
+describe('@/components/TestHoge.vue', () => {
   test('is a Vue instance', () => {
-    const wrapper = shallowMount(NuxtLogo)
+    const wrapper = shallowMount(TestHoge)
     expect(wrapper.vm).toBeTruthy()
   })
 })
