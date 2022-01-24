@@ -19,7 +19,7 @@ type ErrorInfo = {
 }
 
 export default defineComponent({
-  name: 'EmptyLayout',
+  name: 'ErroLayout',
   layout: 'empty',
   props: {
     error: {
