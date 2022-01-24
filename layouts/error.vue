@@ -3,7 +3,7 @@
     <h1 v-if="error.statusCode === 404">
       {{ pageNotFound }}
     </h1>
-    <h1 v-else>
+    <h1 v-else @click="changeOtherErrorMessage('error')">
       {{ otherError }}
     </h1>
     <nuxt-link to="/"> Home page </nuxt-link>
@@ -30,7 +30,10 @@ export default defineComponent({
   setup() {
     const pageNotFound = ref('404 Not Found')
     const otherError = ref('An error occurred')
-    return { pageNotFound, otherError }
+    const changeOtherErrorMessage = (message: string) => {
+      otherError.value = message
+    }
+    return { pageNotFound, otherError, changeOtherErrorMessage }
   },
   head() {
     return {
