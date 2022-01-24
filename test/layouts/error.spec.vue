@@ -27,6 +27,7 @@ describe('@/layouts/error.vue', () => {
     await vm.$nextTick()
 
     expect(wrapper.find('h1').text()).toBe('hoge')
+    expect(wrapper.emitted()['change-other-error-message']).toEqual([['hoge']])
   })
 
   test('isAdmin=true', async () => {

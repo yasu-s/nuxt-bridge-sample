@@ -28,7 +28,8 @@ export default defineComponent({
       default: null,
     },
   },
-  setup(props) {
+  emits: ['change-other-error-message'],
+  setup(props, context) {
     const isAdmin = ref(false)
     const isNotFound = computed(() => {
       return props.error.statusCode === 404
@@ -37,6 +38,7 @@ export default defineComponent({
     const otherError = ref('An error occurred')
     const changeOtherErrorMessage = (message: string) => {
       otherError.value = message
+      context.emit('change-other-error-message', message)
     }
     return { isNotFound, isAdmin, pageNotFound, otherError, changeOtherErrorMessage }
   },
