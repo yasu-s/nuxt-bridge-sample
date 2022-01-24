@@ -1,7 +1,10 @@
+import VueCompositionApi from '@vue/composition-api'
 import { config, RouterLinkStub } from '@vue/test-utils'
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import Vuex from 'vuex'
+
+Vue.use(VueCompositionApi)
 
 // Vuetify設定
 Vue.use(Vuetify)

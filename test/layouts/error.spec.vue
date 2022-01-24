@@ -7,5 +7,10 @@ describe('@/layouts/error.vue', () => {
     const wrapper = shallowMount(ErrorLayout, { propsData: { error: { statusCode: 404 } } })
     expect(wrapper.vm).toBeTruthy()
   })
+
+  test('statusCode=500', () => {
+    const wrapper = shallowMount(ErrorLayout, { propsData: { error: { statusCode: 500 } } })
+    expect(wrapper.find('h1').text()).toBe('An error occurred')
+  })
 })
 </script>
