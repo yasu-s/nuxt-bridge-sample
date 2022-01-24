@@ -62,4 +62,12 @@ module.exports = {
     ],
     'vue/custom-event-name-casing': ['error', 'kebab-case'],
   },
+  overrides: [
+    {
+      files: ['test/**/*.spec.vue'],
+      rules: {
+        '@typescript-eslint/no-unsafe-argument': ['off']
+      }
+    }
+  ]
 }
