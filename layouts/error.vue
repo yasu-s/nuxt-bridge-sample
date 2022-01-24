@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <h1 v-if="error.statusCode === 404">
+    <h1 v-if="isNotFound">
       {{ pageNotFound }}
     </h1>
     <h1 v-else @click="changeOtherErrorMessage('error')">
@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, PropType } from '@vue/composition-api'
+import { defineComponent, ref, PropType, computed } from '@vue/composition-api'
 
 type ErrorInfo = {
   /** HTTPステータスコード */
@@ -28,14 +28,17 @@ export default defineComponent({
       default: null,
     },
   },
-  setup() {
+  setup(props) {
     const isAdmin = ref(false)
+    const isNotFound = computed(() => {
+      return props.error.statusCode === 404
+    })
     const pageNotFound = ref('404 Not Found')
     const otherError = ref('An error occurred')
     const changeOtherErrorMessage = (message: string) => {
       otherError.value = message
     }
-    return { isAdmin, pageNotFound, otherError, changeOtherErrorMessage }
+    return { isNotFound, isAdmin, pageNotFound, otherError, changeOtherErrorMessage }
   },
   head() {
     return {

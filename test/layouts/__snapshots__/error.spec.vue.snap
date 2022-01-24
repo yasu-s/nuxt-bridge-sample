@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`@/layouts/error.vue is a Vue instance 1`] = `
+"<v-app-stub dark=\\"true\\" id=\\"app\\">
+  <h1>
+    404 Not Found
+  </h1> <a> Home page </a>
+  <!---->
+</v-app-stub>"
+`;

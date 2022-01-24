@@ -6,6 +6,7 @@ describe('@/layouts/error.vue', () => {
   test('is a Vue instance', () => {
     const wrapper = shallowMount(ErrorLayout, { propsData: { error: { statusCode: 404 } } })
     expect(wrapper.vm).toBeTruthy()
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('statusCode=500', () => {

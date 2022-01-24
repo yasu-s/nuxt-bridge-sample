@@ -12,7 +12,8 @@
     "lint": "yarn lint:ts && yarn lint:style",
     "lintfix": "yarn lint:ts --fix && yarn lint:style --fix",
     "test": "jest",
-    "test:w": "jest --watch"
+    "test:w": "jest --watch",
+    "test:ci": "jest --runInBand --coverage --ci"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
