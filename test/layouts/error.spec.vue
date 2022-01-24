@@ -1,6 +1,12 @@
 <script lang="ts">
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, Wrapper } from '@vue/test-utils'
+import Vue from 'vue'
 import ErrorLayout from '@/layouts/error.vue'
+
+const getVm = (wrapper: Wrapper<Vue>) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  return wrapper.vm as NonNullable<typeof ErrorLayout.data> & Vue
+}
 
 describe('@/layouts/error.vue', () => {
   test('is a Vue instance', () => {
@@ -17,8 +23,8 @@ describe('@/layouts/error.vue', () => {
   test('changeOtherErrorMessage', async () => {
     const wrapper = shallowMount(ErrorLayout, { propsData: { error: { statusCode: 500 } } })
 
-    // eslint-disable-next-line
-    const vm = wrapper.vm as any
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const vm = getVm(wrapper)
 
     // eslint-disable-next-line
     vm.changeOtherErrorMessage('hoge')
@@ -38,8 +44,10 @@ describe('@/layouts/error.vue', () => {
     expect(actual.exists()).toBeTruthy()
     expect(actual.text()).toBe('管理者')
 
-    // eslint-disable-next-line
-    expect((wrapper.vm as any).isAdmin).toBeTruthy()
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const vm = getVm(wrapper)
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    expect(vm.isAdmin).toBeTruthy()
   })
 })
 </script>
