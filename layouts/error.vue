@@ -7,6 +7,7 @@
       {{ otherError }}
     </h1>
     <nuxt-link to="/"> Home page </nuxt-link>
+    <div v-if="isAdmin" class="admin-label">管理者</div>
   </v-app>
 </template>
 
@@ -28,12 +29,13 @@ export default defineComponent({
     },
   },
   setup() {
+    const isAdmin = ref(false)
     const pageNotFound = ref('404 Not Found')
     const otherError = ref('An error occurred')
     const changeOtherErrorMessage = (message: string) => {
       otherError.value = message
     }
-    return { pageNotFound, otherError, changeOtherErrorMessage }
+    return { isAdmin, pageNotFound, otherError, changeOtherErrorMessage }
   },
   head() {
     return {

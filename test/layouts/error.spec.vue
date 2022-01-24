@@ -27,5 +27,17 @@ describe('@/layouts/error.vue', () => {
 
     expect(wrapper.find('h1').text()).toBe('hoge')
   })
+
+  test('isAdmin=true', async () => {
+    const wrapper = shallowMount(ErrorLayout, { propsData: { error: { statusCode: 500 } } })
+    await wrapper.setData({ isAdmin: true })
+
+    const actual = wrapper.find('.admin-label')
+    expect(actual.exists()).toBeTruthy()
+    expect(actual.text()).toBe('管理者')
+
+    // eslint-disable-next-line
+    expect((wrapper.vm as any).isAdmin).toBeTruthy()
+  })
 })
 </script>
