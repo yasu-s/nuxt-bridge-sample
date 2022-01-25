@@ -1,19 +1,7 @@
 <script lang="ts">
-import { ShallowUnwrapRef } from '@vue/composition-api'
-import { shallowMount, Wrapper } from '@vue/test-utils'
-import Vue, { ComponentOptions } from 'vue'
+import { shallowMount } from '@vue/test-utils'
 import ErrorLayout from '@/layouts/error.vue'
-
-/** Wrapper */
-type WrapperToShallowUnwrapRef<T> = T extends ShallowUnwrapRef<infer U> ? U : never
-type KnownKeys<T> = {
-  [K in keyof T as string extends K ? never : number extends K ? never : K]: T[K]
-}
-
-const getVm = <Data>(component: ComponentOptions<Vue, Data>, wrapper: Wrapper<Vue>) => {
-  type componentDataType = NonNullable<typeof component.data>
-  return wrapper.vm as KnownKeys<WrapperToShallowUnwrapRef<componentDataType>> & Vue
-}
+import { WrapperUtil } from '@/test/utils'
 
 describe('@/layouts/error.vue', () => {
   test('is a Vue instance', () => {
@@ -30,7 +18,7 @@ describe('@/layouts/error.vue', () => {
   test('changeOtherErrorMessage', async () => {
     const wrapper = shallowMount(ErrorLayout, { propsData: { error: { statusCode: 500 } } })
 
-    const vm = getVm(ErrorLayout, wrapper)
+    const vm = WrapperUtil.getVm(ErrorLayout, wrapper)
     vm.changeOtherErrorMessage('hoge')
     await vm.$nextTick()
 
@@ -48,7 +36,7 @@ describe('@/layouts/error.vue', () => {
     expect(actual.exists()).toBeTruthy()
     expect(actual.text()).toBe('管理者')
 
-    const vm = getVm(ErrorLayout, wrapper)
+    const vm = WrapperUtil.getVm(ErrorLayout, wrapper)
     expect(vm.isAdmin).toBeTruthy()
   })
 })
