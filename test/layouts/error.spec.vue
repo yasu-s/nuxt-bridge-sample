@@ -5,12 +5,14 @@ import Vue from 'vue'
 import ErrorLayout from '@/layouts/error.vue'
 
 /** Wrapper */
-type WrapperToShallowUnwrapRef<T> = T extends ShallowUnwrapRef<infer U> ? ShallowUnwrapRef<U> : never
+type WrapperToShallowUnwrapRef<T> = T extends ShallowUnwrapRef<infer U> ? U : never
+type KnownKeys<T> = {
+  [K in keyof T as string extends K ? never : number extends K ? never : K]: T[K]
+}
 
 const getVm = (wrapper: Wrapper<Vue>) => {
   type componentDataType = NonNullable<typeof ErrorLayout.data>
-  const vm = wrapper.vm as WrapperToShallowUnwrapRef<componentDataType> & Vue
-  return vm
+  return wrapper.vm as KnownKeys<WrapperToShallowUnwrapRef<componentDataType>> & Vue
 }
 
 describe('@/layouts/error.vue', () => {
@@ -29,7 +31,6 @@ describe('@/layouts/error.vue', () => {
     const wrapper = shallowMount(ErrorLayout, { propsData: { error: { statusCode: 500 } } })
 
     const vm = getVm(wrapper)
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     vm.changeOtherErrorMessage('hoge')
     await vm.$nextTick()
 
