@@ -1,11 +1,16 @@
 <script lang="ts">
+import { ShallowUnwrapRef } from '@vue/composition-api'
 import { shallowMount, Wrapper } from '@vue/test-utils'
 import Vue from 'vue'
 import ErrorLayout from '@/layouts/error.vue'
 
+/** Wrapper */
+type WrapperToShallowUnwrapRef<T> = T extends ShallowUnwrapRef<infer U> ? ShallowUnwrapRef<U> : never
+
 const getVm = (wrapper: Wrapper<Vue>) => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  return wrapper.vm as NonNullable<typeof ErrorLayout.data> & Vue
+  type componentDataType = NonNullable<typeof ErrorLayout.data>
+  const vm = wrapper.vm as WrapperToShallowUnwrapRef<componentDataType> & Vue
+  return vm
 }
 
 describe('@/layouts/error.vue', () => {
@@ -23,13 +28,9 @@ describe('@/layouts/error.vue', () => {
   test('changeOtherErrorMessage', async () => {
     const wrapper = shallowMount(ErrorLayout, { propsData: { error: { statusCode: 500 } } })
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const vm = getVm(wrapper)
-
-    // eslint-disable-next-line
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     vm.changeOtherErrorMessage('hoge')
-
-    // eslint-disable-next-line
     await vm.$nextTick()
 
     expect(wrapper.find('h1').text()).toBe('hoge')
@@ -37,16 +38,16 @@ describe('@/layouts/error.vue', () => {
   })
 
   test('isAdmin=true', async () => {
-    const wrapper = shallowMount(ErrorLayout, { propsData: { error: { statusCode: 500 } } })
+    const wrapper = shallowMount(ErrorLayout, {
+      propsData: { error: { statusCode: 500 } },
+    })
     await wrapper.setData({ isAdmin: true })
 
     const actual = wrapper.find('.admin-label')
     expect(actual.exists()).toBeTruthy()
     expect(actual.text()).toBe('管理者')
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const vm = getVm(wrapper)
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(vm.isAdmin).toBeTruthy()
   })
 })
