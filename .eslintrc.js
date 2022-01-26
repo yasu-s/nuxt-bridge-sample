@@ -52,6 +52,13 @@ module.exports = {
     'import/newline-after-import': 'error',
     'import/no-duplicates': 'error',
     'import/no-self-import': 'error',
+    'vue/block-lang': ['error',
+      {
+        script: {
+          lang: 'ts'
+        }
+      }
+    ],
     'vue/component-name-in-template-casing': [
       'error',
       'kebab-case',
@@ -61,6 +68,8 @@ module.exports = {
       },
     ],
     'vue/custom-event-name-casing': ['error', 'kebab-case'],
+    'vue/no-undef-properties': ['error'],
+    'vue/static-class-names-order': ['error'],
   },
   overrides: [
     {
