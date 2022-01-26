@@ -70,6 +70,7 @@ module.exports = {
     'vue/custom-event-name-casing': ['error', 'kebab-case'],
     'vue/no-undef-properties': ['error'],
     'vue/static-class-names-order': ['error'],
+    'vue/no-restricted-syntax': ['error'],
   },
   overrides: [
     {
