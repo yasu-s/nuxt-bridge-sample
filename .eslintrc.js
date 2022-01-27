@@ -70,7 +70,12 @@ module.exports = {
     'vue/custom-event-name-casing': ['error', 'kebab-case'],
     'vue/no-undef-properties': ['error'],
     'vue/static-class-names-order': ['error'],
-    'vue/no-restricted-syntax': ['error'],
+    'vue/v-on-function-call': ['error', 'always'],
+    'vue/no-restricted-syntax': [
+      'error',
+      'VElement > VExpressionContainer AssignmentExpression',
+      "VAttribute[key.name.rawName='if'] BinaryExpression",
+    ],
   },
   overrides: [
     {
